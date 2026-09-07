@@ -75,11 +75,32 @@ The output will be in the `dist/` directory.
 
 ## Validation & Verification
 
+### Pregnancy reference surface
+
+When a placenta or umbilical structure is visible (including search and isolation),
+the viewer displays a translucent, rounded abdominal surface around it. Clearing
+the selection restores the original skin when the pregnancy layer is also hidden.
+The body-surface toggle stays on as context while pregnancy structures are
+visible; reset follows the existing default layers.
+
+This is an illustrative envelope, not a gestational-age model or a simulation of
+uterine/internal-organ changes. Original model binaries remain unchanged. The
+refined surface and neutral geometry are cached and shared by rendering and picking.
+
+![Illustrative abdominal surface around the placenta and umbilical reference](docs/pregnancy-reference.png)
+
 ```sh
 npm run check                  # TypeScript typecheck (0 errors)
 node scripts/validate-atlas.mjs        # Checks all 3,004 meshes, buffers, and concepts
 node scripts/validate-interactions.mjs # Validates explosion packing & pointer gestures
+npm run test:pregnancy                # Actual-mesh containment, topology and state tests
 ```
+
+The pregnancy tests also run after `npm run build`. With the viewer running and
+Playwright available, `npm run e2e:pregnancy` checks selection, layers, isolation,
+restoration, zoom, and mobile behavior. Set `PREGNANCY_TEST_URL` to the viewer URL
+(default `http://localhost:3016/`) and, if needed, `PLAYWRIGHT_MODULE` to an existing
+Playwright module path. The browser check does not require a new runtime dependency.
 
 ---
 

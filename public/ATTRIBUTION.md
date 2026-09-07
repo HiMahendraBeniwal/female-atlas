@@ -25,3 +25,8 @@ Adaptations by Mahendra Beniwal:
 - Geometry simplified with a 0.2% per-structure relative error bound using meshoptimizer and normals quantized to signed 16-bit for compact GPU delivery.
 - Authentic female morphological proportions applied across all layers: slender shoulders, delicate conical rib cage, hourglass waist indentation, flared female pelvic hips and glutes, and full natural female breast contours.
 - All 3,004 individual meshes and 2,557 named concepts curated and indexed for real-time 3D exploration.
+
+The viewer can generate a temporary, locally refined abdominal skin surface around
+visible pregnancy reference structures. This illustrative runtime adaptation does
+not change the source binary assets, encode a gestational age, or simulate changes
+to internal organs. Hiding pregnancy restores the original surface.
