@@ -1,7 +1,10 @@
 {
-  "name": "anatomy-studio",
-  "version": "0.1.0",
+  "name": "female-atlas",
+  "version": "1.0.0",
+  "description": "Female Atlas — Interactive 3D Female Anatomy Explorer",
+  "author": "Mahendra Beniwal (https://x.com/MdrBwl)",
   "private": true,
+
   "engines": {
     "node": ">=22.13.0"
   },

@@ -1,19 +1,58 @@
-# Human Atlas
+# Female Atlas
 
-An interactive 3D anatomy explorer built with React, Three.js, and shadcn/ui. Take the BodyParts3D adult male reference apart into **2,234 individually selectable meshes**, explore **15 anatomical systems**, and search **3,432 named concepts**.
+An interactive, full-depth 3D anatomy explorer built with React, Three.js, and shadcn/ui. Explore the complete reference female anatomy across **3,004 individually selectable pieces**, **2,557 named anatomical structures**, and **16 human body systems**.
 
-**[Explore the live demo](https://human-atlas-seven.vercel.app)**
+Created by **Mahendra Beniwal** ([@MdrBwl on X](https://x.com/MdrBwl)).
 
-## Explore
+---
 
-- Orbit, zoom, and select structures directly on the body.
-- Toggle individual systems or use skeleton and organ presets.
-- Move from assembled anatomy to a spaced inventory of every visible piece.
-- Search anatomical names and source identifiers.
-- Isolate a selected structure and read its details.
-- Use compact controls and detail panels on mobile.
+## Features
 
-## Run locally
+- **Complete Female Anatomy**:
+  - **100% Female Reproductive System**: Uterus (10 detailed segments), ovaries, fallopian tubes, cervix, and vagina.
+  - **Breast & Mammary Structures**: 16 individually modeled mammary gland lobes, adipose tissue, lactiferous ducts, sinuses, and nipples.
+  - **Pregnancy Reference**: Placenta and umbilical cord reference structures.
+- **Full Musculoskeletal System**:
+  - **Full Skeleton (343 pieces)**: Cranium, facial bones, mandible, hyoid, vertebral column, complete rib cage, clavicles, scapulae, arms, hands, pelvis, femur, patella, tibia, fibula, and feet.
+  - **Full Musculature (416 pieces)**: Biceps, triceps, deltoids, pectorals, obliques, rectus abdominis, gluteus (maximus, medius, minimus), quadriceps, hamstrings, gastrocnemius, soleus, and foot/hand muscles.
+- **Authentic Female Morphology**:
+  - Slender feminine shoulders and neck.
+  - Delicately tapered conical rib cage.
+  - Graceful hourglass waistline indentation ($\approx 0.65$ waist-to-hip ratio).
+  - Flared feminine pelvic hips and rounded glutes.
+  - Natural female breast contours that seamlessly enclose the mammary glands.
+- **Dynamic 3D Navigation**:
+  - **Cursor-Centric Zoom ("Zoom-to-Cursor")**: Mouse wheel scrolling zooms directly into the anatomical structure under your cursor.
+  - **Anatomical Explosion**: Smoothly slide from the fully assembled body to an organized, non-overlapping spatial inventory of every piece.
+  - **Structure Isolation & Search**: Instant combobox search for structures with quick isolation and contextual anatomical descriptions.
+  - **Multi-System Layers**: Toggle any of the 16 body systems with quick presets for All, Skeleton, and Visceral Organs.
+
+---
+
+## 16 Anatomical Systems
+
+| System | Pieces | Description |
+| :--- | :--- | :--- |
+| **Skeletal** | 343 | Cranium, spine, thoracic cage, upper & lower limbs |
+| **Muscular** | 416 | Complete superficial and deep muscular system |
+| **Arterial** | 666 | Systemic arterial network from aorta to digital arteries |
+| **Venous** | 413 | Superficial and deep venous return networks |
+| **Reproductive** | 54 | Uterus, ovaries, fallopian tubes, vagina, breasts, nipples |
+| **Pregnancy** | 8 | Placenta and umbilical reference structures |
+| **Cardiac** | 58 | Heart chambers, myocardium, valves, and great vessels |
+| **Digestive** | 158 | Gastrointestinal tract, liver, pancreas, and spleen |
+| **Respiratory** | 189 | Lungs, bronchial tree, trachea, and larynx |
+| **Urinary** | 93 | Kidneys, ureters, female bladder, and urethra |
+| **Nervous** | 434 | Brain, cerebrum, cerebellum, spinal cord, cranial nerves |
+| **Sensory** | 98 | Eyes, optical apparatus, inner ear structures |
+| **Endocrine** | 7 | Thyroid, parathyroid, and adrenal glands |
+| **Lymphatic** | 17 | Lymph nodes and lymphatic drainage pathways |
+| **Integumentary** | 5 | Body surface skin, eyebrows, head hair, and lips |
+| **Connective** | 46 | Ligaments, articular disks, and joint capsules |
+
+---
+
+## Run Locally
 
 Requires Node.js 22.13 or newer. No API keys or accounts are needed.
 
@@ -22,43 +61,45 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:3016. To build the static site, run `npm run build`; the output is in `dist/`.
+Open [http://localhost:3016](http://localhost:3016) in your browser.
 
-## Validate
+To build the production bundle:
 
 ```sh
-npm run check
-node scripts/validate-atlas.mjs
-node scripts/validate-interactions.mjs
 npm run build
 ```
 
-Validation covers mesh buffers, names and concept membership, nonoverlapping exploded layouts at desktop and mobile aspect ratios, search and inspection contracts, and tap-versus-drag handling. Browser interaction checks have exercised selection, system controls, search, isolation, rotation, and 390×844, 320×568, and 844×390 layouts. Phone controls stay clear of the exploded inventory, and isolated structures fit the space above or beside the detail panel. Physical-device performance and real multitouch hardware have not been tested.
+The output will be in the `dist/` directory.
 
-## Anatomy data
+---
 
-The current viewer uses **BodyParts3D 4.0**, an adult male reference anatomy, licensed **CC BY 4.0**. It does not represent every human structure or variation. Individual source meshes are distinct from named concepts, which may group multiple meshes. Descriptions distinguish general system context from individual organ explanations.
+## Validation & Verification
 
-Geometry is simplified for browser performance while retaining every source mesh. The packaged model contains 2,288,268 triangles and downloads approximately 33 MB of compressed geometry. Full credits, source links, and adaptation details are in [ATTRIBUTION.md](public/ATTRIBUTION.md).
+```sh
+npm run check                  # TypeScript typecheck (0 errors)
+node scripts/validate-atlas.mjs        # Checks all 3,004 meshes, buffers, and concepts
+node scripts/validate-interactions.mjs # Validates explosion packing & pointer gestures
+```
 
-This is an educational explorer, not a diagnostic or surgical tool.
+---
 
-## How it works
+## Sources & Attribution
 
-Geometry is merged into batches. Per-structure GPU textures control translation, visibility, and selection, while component geometry supports accurate picking. Exploded layouts pack only the visible pieces. Rendering updates when the scene changes; orbit controls remain responsive without thousands of separate draw calls.
+- **Human Reference Atlas (HuBMAP)**: *3D Reference Organ Set for Female v1.5* (2023) by Kristen Browne and Heidi Schlehlein. Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [DOI: 10.48539/HBM352.BTSQ.586](https://doi.org/10.48539/HBM352.BTSQ.586).
+- **BodyParts3D**: Database Center for Life Science (DBCLS). Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- See [ATTRIBUTION.md](public/ATTRIBUTION.md) for detailed adaptation notes.
 
-The optional WebMCP tools expose anatomy search and inspection in compatible browsers. The visible interface works without them.
+---
 
-## Rebuilding geometry
+## Author & Community
 
-The repository includes browser-ready geometry. Rebuilding it is optional: obtain the official BodyParts3D OBJ archive and English metadata tables, prepare the joined concepts and display-system mappings, run `scripts/convert-anatomy.py`, then `node scripts/optimize-anatomy.mjs` and `node scripts/compress-models.mjs`. Simplification uses a 0.2% relative error limit per structure.
+- **Author**: Mahendra Beniwal
+- **X (Twitter)**: [@MdrBwl](https://x.com/MdrBwl)
 
-## Deploy
+Issues and pull requests are welcome!
 
-Import this repository into Vercel as a Vite project. The included `vercel.json` configures `npm ci`, `npm run build`, and the `dist` output directory. It can also be served by a static host.
+---
 
 ## License
 
-Original application code is released under the [MIT License](LICENSE). **The anatomy data has its own CC BY 4.0 license**; preserve the attribution when redistributing it. Third-party dependencies retain their respective licenses.
-
-Issues and pull requests are welcome. Please include reproduction steps and browser/device details for interaction problems.
+Application source code is released under the [MIT License](LICENSE). Anatomical datasets retain their respective [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licenses.
