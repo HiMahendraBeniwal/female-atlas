@@ -14,7 +14,10 @@
     "build:vercel": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port 3000",
     "start": "vite preview --host 0.0.0.0 --port 3000",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "test:pregnancy": "node --test scripts/pregnancy-presentation.test.mjs",
+    "postbuild": "npm run test:pregnancy",
+    "e2e:pregnancy": "node scripts/e2e-pregnancy.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
